@@ -12,40 +12,48 @@ const int line2 = 2;
 double[] lineData1 = InputLineData(line1);
 double[] lineData2 = InputLineData(line2);
 
-if (ValidateLines(lineData1, lineData2)){
+if (ValidateLines(lineData1, lineData2))
+{
     double[] coord = FindCoords(lineData1, lineData2);
     Console.Write($" dot is y={lineData1[Coefficient]} * x + {lineData1[Constant]} and y={lineData2[Coefficient]} * x +{lineData2[Constant]}");
     Console.WriteLine($" have coordinates ({coord[x_cord]}, {coord[y_cord]})");
 
 }
 
-double Promt(string message){
+double Promt(string message)
+{
     Console.Write(message);
     string value = Console.ReadLine();
     double result = Convert.ToDouble(value);
     return result;
 }
 
-double[] InputLineData(int numberOfLine){
+double[] InputLineData(int numberOfLine)
+{
     double[] lineData = new double[2];
     lineData[Coefficient] = Promt($"Enter coef for {numberOfLine} >");
     lineData[Constant] = Promt($" Enter const for {numberOfLine} >");
     return lineData;
 }
-double[] FindCoords(double[] lineData1, double[] lineData2){
+double[] FindCoords(double[] lineData1, double[] lineData2)
+{
     double[] coord = new double[2];
     coord[x_cord] = (lineData1[Constant] - lineData2[Constant]) / (lineData2[Coefficient] - lineData1[Coefficient]);
     coord[y_cord] = lineData1[Constant] * coord[x_cord] + lineData1[Constant];
     return coord;
 }
 
-bool ValidateLines(double[] lineData1, double[] lineData2){
-    if (lineData1[Coefficient] == lineData2[Coefficient]){
-        if (lineData1[Constant] == lineData2[Constant]){
+bool ValidateLines(double[] lineData1, double[] lineData2)
+{
+    if (lineData1[Coefficient] == lineData2[Coefficient])
+    {
+        if (lineData1[Constant] == lineData2[Constant])
+        {
             Console.WriteLine("sovpadayut");
             return false;
         }
-        else{
+        else
+        {
             Console.WriteLine("paralelni");
             return false;
         }
